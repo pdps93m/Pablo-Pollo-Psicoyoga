@@ -1,0 +1,65 @@
+{% extends "entidades/index.html" %}
+
+
+{% block titulo %}
+<h1 class="site-heading text-center text-faded d-none d-lg-block">
+<span class="site-heading-upper text-primary mb-3">Alumnos</span>
+</h1>
+{% endblock titulo %}
+
+
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td width="200"><h2>Alumno</h2></td>
+        <td>
+            <a
+              href="{% url 'alumnoCreate' %}"
+              class="btn btn-primary btn-sm"
+              ><i class="fa fa-plus fa-lg" title="Crear"></i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for a in ac_terap_list %}
+        <tr>
+            <td>{{ a.id }}</td>
+            <td>{{ a.nombre }}</td>
+            <td>{{ a.apellido }}</td>
+            <td>{{ a.email }}</td>
+            <td>
+                <a
+                  href="{% url 'alumnoUpdate' a.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Edit Record">Editar</i>
+                </a>
+                <a
+                  href="{% url 'alumnoDelete' a.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Delete Record">Borrar</i>"        
+                </a>
+            </td>        
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}
+    

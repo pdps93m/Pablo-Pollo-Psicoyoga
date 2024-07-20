@@ -1,0 +1,24 @@
+{% extends "entidades/index.html" %}
+
+
+{% block titulo %}
+<h1 class="site-heading text-center text-faded d-none d-lg-block">Eliminar Estilo</h1>
+{% endblock titulo %}
+
+
+
+{% block contenido %}
+
+<form action="" method="post">
+    {% csrf_token %}     
+    <div class="text-center">
+        <h3>¿ Desea eliminar estos datos ? <p style="color:red">{{ object }}</p>
+    </div>        
+    <div class="text-center">
+        <input type="submit" class="btn btn-primary btn-block" value="Confirmar">
+    </div>
+</form>    
+
+{% endblock contenido %}
+    
+
