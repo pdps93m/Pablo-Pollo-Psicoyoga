@@ -1,0 +1,32 @@
+{% extends "entidades/index.html" %}
+
+{% block titulo %}
+<h1 class="mb-5">Resultados de la busqueda</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<h1>Resultados de la búsqueda</h1>
+
+<h2>Estilos</h2>
+<ul>
+    {% for estilo in resultados_estilos %}
+        <li>{{ estilo.nombre }}</li>
+    {% empty %}
+        <li>No se encontraron estilos.</li>
+    {% endfor %}
+</ul>
+
+<h2>Alumnos</h2>
+<ul>
+    {% for alumno in resultados_alumnos %}
+        <li>{{ alumno.nombre }} {{ alumno.apellido }}</li>
+    {% empty %}
+        <li>No se encontraron alumnos.</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock contenido %}

@@ -1,39 +1,68 @@
 {% extends "entidades/index.html" %}
 
-
 {% block titulo %}
 <h1 class="site-heading text-center text-faded d-none d-lg-block">
-<span class="site-heading-upper text-primary mb-3">Ac Terapeutico</span>
+  <span class="site-heading-upper text-primary mb-3">Acompañamiento Terapéutico</span>
 </h1>
 {% endblock titulo %}
 
-
-
 {% block contenido %}
-<section id="acompanamiento-terapeutico">
-    <h2>Acompañamiento Terapéutico</h2>
-    <p>En mi espacio terapéutico, te acompaño en un viaje de autodescubrimiento y transformación, donde la mente y el cuerpo se unen para alcanzar un estado de mayor bienestar.</p>
-  
-    <p>A través de un enfoque integral que integra la biopsicología, te guiaré en la comprensión de tus emociones, pensamientos y comportamientos, y te brindaré herramientas para gestionarlas de manera efectiva.</p>
-  
-    <p>Juntos exploraremos las raíces de tus inquietudes y trabajaremos en el desarrollo de tu potencial para alcanzar una vida más plena y satisfactoria.</p>
-  
-    <h3>¿Qué puedes esperar de mi acompañamiento?</h3>
-  
-    <ul>
-      <li>Un espacio seguro y de confianza para expresarte libremente.</li>
-      <li>Una escucha atenta y empática.</li>
-      <li>Un enfoque centrado en tus necesidades e intereses específicos.</li>
-      <li>Herramientas para comprender y gestionar tus emociones.</li>
-      <li>Estrategias para mejorar tu autoestima y autoconfianza.</li>
-      <li>Un camino hacia el autoconocimiento y la transformación personal.</li>
-    </ul>
-  
-    <p>Si estás buscando un espacio donde ser escuchado/a y apoyado/a en tu camino hacia el bienestar, te invito a contactarme.</p>
-  
-    <a href="" class="btn">Reservar sesión</a>
-  </section>
-{% endblock contenido %}
-    
+<section class="terapia-section">
+  <h2 class="section-title">¿Qué es el acompañamiento terapéutico?</h2>
+  <p class="section-description">
+    El acompañamiento terapéutico es un viaje de autodescubrimiento y crecimiento personal. Es un espacio seguro y confidencial donde podrás explorar tus emociones, pensamientos y experiencias de vida junto a un profesional.
+  </p>
 
-    
+  <div class="benefits-list">
+    <h3>Beneficios del acompañamiento terapéutico:</h3>
+    <ul>
+      <li><strong>Mayor autoconocimiento: Descubre tus fortalezas y áreas de oportunidad.</li>
+      <li><strong>Gestión emocional:</strong> Aprende herramientas para manejar tus emociones de manera saludable.</li>
+      <li><strong>Mejora de las relaciones:</strong> Fortalece tus vínculos con los demás.</li>
+      <li><strong>Desarrollo personal:</strong> Alcanza tus metas y vive una vida más plena.</li>
+      <li><strong>Bienestar emocional:</strong> Disfruta de una mayor tranquilidad y satisfacción.</li>
+    </ul>
+  </div>
+
+  <p class="section-description">
+    En nuestras sesiones, trabajaremos juntos para identificar tus necesidades y establecer objetivos claros. A través de diferentes técnicas y herramientas terapéuticas, te acompañaré en este proceso de transformación.
+  </p>
+
+  <p>¿Estás listo para dar el primer paso hacia tu bienestar emocional?</p>
+</section>
+
+
+<section class="horario-section">
+  <h2 class="section-title">Horarios del espacio</h2>
+  <table class="horario-table">
+    <thead>
+      <tr>
+        <th>Día</th>
+        <th>Horario</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Lunes</td>
+        <td>15:00 - 20:00</td>
+      </tr>
+      <tr>
+        <td>Martes</td>
+        <td>9:00 - 12:00 y 16:00 - 19:00</td>
+      </tr>
+      <tr>
+        <td>Miércoles</td>
+        <td>10:00 - 18:00</td>
+      </tr>
+      <tr>
+        <td>Jueves</td>
+        <td>14:00 - 19:00</td>
+      </tr>
+      <tr>
+        <td>Viernes</td>
+        <td>9:00 - 13:00</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+{% endblock contenido %}

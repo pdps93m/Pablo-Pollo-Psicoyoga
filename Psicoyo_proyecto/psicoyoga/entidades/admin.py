@@ -5,5 +5,6 @@ from .models import *
 
 admin.site.register(Estilo)
 admin.site.register(Alumno)
-#admin.site.register(Consultas)
+admin.site.register(Consulta)
 admin.site.register(Ac_terapeutico)
+admin.site.register(Avatar)

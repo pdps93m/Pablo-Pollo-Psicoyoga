@@ -13,13 +13,9 @@ class AlumnoForm(forms.Form):
     apellido = forms.CharField(required=True)
     email = forms.CharField(max_length=50, required=True)
     
-class Ac_terapForm(forms.Form):
-    nombre = forms.CharField(max_length=50, required=True, label="Nombre del Paciente")
-    asist_semanales = forms.CharField(max_length=50,required=True)
-    horario = forms.CharField(max_length=50, required=True, label="Horario de Concurrencia")
-    email = forms.EmailField(max_length=50,required=True)
     
 class RegistroForm(UserCreationForm):
+    User = forms.CharField(max_length=50, required=True, label="Nombre de usuario")
     email = forms.EmailField(required=True)
     password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
     password2 = forms.CharField(label="Contraseña a confirmar", widget=forms.PasswordInput)
@@ -28,11 +24,6 @@ class RegistroForm(UserCreationForm):
         model = User
         fields = ["username", "email", "password1", "password2"]
         
-class ReservarForm(forms.Form):
-    paciente_nombre = forms.CharField(max_length=50, required=True, label="Nombre del Paciente")
-    paciente_asist_semanales = forms.CharField(max_length=50,required=True)
-    paciente_horario = forms.CharField(max_length=50, required=True, label="Horario de Concurrencia")
-    paciente_email = forms.EmailField(max_length=50,required=True)
     
 class UsuarioEditForm(UserChangeForm):
     email = forms.EmailField(required=True)
@@ -45,5 +36,19 @@ class UsuarioEditForm(UserChangeForm):
 
 class AvatarForm(forms.Form):
     imagen = forms.ImageField(required=True)
+    
+class ConsultaForm(forms.Form):
+    nombre = forms.CharField(max_length=100, required=True, label="Nombre")
+    email = forms.EmailField(required=True)
+    consulta_motivo = forms.CharField(max_length=255, required=True)
+    consulta_mensaje = forms.CharField(widget=forms.Textarea, required=True)
+    
+    class Meta:
+        model = User
+        fields = ["nombre", "email", "motivo", "mensaje"]
 
+class ConsultaForm(forms.Form):
+    nombre = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    mensaje = forms.CharField(widget=forms.Textarea)
     

@@ -15,9 +15,8 @@ class Migration(migrations.Migration):
             name='Ac_terapeutico',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=60)),
-                ('pregunta', models.CharField(max_length=500)),
-                ('email', models.EmailField(max_length=254)),
+                ('dia', models.CharField(max_length=60)),
+                ('horario', models.CharField(max_length=500)),
             ],
         ),
         migrations.CreateModel(
@@ -29,15 +28,8 @@ class Migration(migrations.Migration):
                 ('email', models.EmailField(max_length=254)),
             ],
         ),
-        migrations.CreateModel(
-            name='Consultas',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombre', models.CharField(max_length=60)),
-                ('pregunta', models.CharField(max_length=500)),
-                ('email', models.EmailField(max_length=254)),
-            ],
-        ),
+        
+        
         migrations.CreateModel(
             name='Estilo',
             fields=[

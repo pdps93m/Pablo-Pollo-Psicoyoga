@@ -6,104 +6,95 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Psicoyoga</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-        <!-- Font Awesome-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">   
     </head>
-    <body class="superBody">
+    <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-light bg-light static-top">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'home' %}">Inicio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="navbar-brand" href="{% url 'alumno' %}">Alumno</a></li>
+                        <li class="nav-item"><a class="navbar-brand" href="{% url 'estilo' %}">Estilos</a></li>
+                        <li class="nav-item"><a class="navbar-brand" href="{% url 'ac_terapeutico' %}">Ac Terapeutico</a></li>
+                        <li class="nav-item"><a class="navbar-brand" href="{% url 'datos_mios' %}">Sobre mí</a></li>
+                        <a class="btn btn-primary" href="{% url 'perfil' %}">Editar Perfil</a>
+                        <p [{{ user.first_name}} {{ user.last_name }}] ></p>
+                        <div class="text-center">
+                            <a href="{% url 'agregarAvatar' %}"><img src="{{request.session.avatar}}" height="40px" weight="40px" alt="Mi avatar"></a>
+                        </div>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link bg-danger ms-2">Logout</button>
+                </form>
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+                    <a class="btn btn-success" href="{% url 'registro' %}">Registrarme</a>
+                {% endif %}
 
-            {% if user.is_authenticated %}
-                <a class="navbar-brand" href="{% url 'alumno' %}">Alumno</a>
-                <a class="navbar-brand" href="{% url 'estilo' %}">Estilos</a>
-                <a class="navbar-brand" href="{% url 'ac_terapeutico' %}">Ac Terapeutico</a>
-                <a class="navbar-brand" href="{% url 'datos_mios' %}">Sobre mí</a>
-                <a class="navbar-brand" href="{% url 'consultas' %}">Preguntas</a>
-                <a class="btn btn-primary" href="{% url 'perfil' %}">Editar Perfil</a>
-                <p style=""> [{{ user.first_name}} {{ user.last_name }}]</p> 
-                <div class="text-center">
-                    <a href="{% url 'agregarAvatar' %}"><img src="{{request.session.avatar}}" height="40px" weight="40px" alt="Mi avatar"></a>
+                        </div>
+                    </ul>
                 </div>
-            <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit" class="nav-link bg-danger ms-2">Logout</button>
-            </form>
-            {% else %}
-                <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
-                <a class="btn btn-success" href="{% url 'registro' %}">Registrarme</a>
-            {% endif %}
-        
             </div>
         </nav>
         <!-- Masthead-->
         <header class="masthead">
-            <div class="container position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <div class="text-center text-white">
-                            <!-- Page heading-->
-                            
-                            {% block titulo %}
-                            
-                            <h1 class="mb-5">Bienvenidos a Psicoyoga</h1>
-
-                            {% endblock titulo %}
-                                
-                        </div>
-                    </div>
-                </div>
+            <div class="container">
+                <div class="masthead-subheading">Bienvenido a Psicoyoga</div>
+                <div class="masthead-heading text-uppercase">Un espacio donde aprender y crecer</div>
             </div>
         </header>
-
-        
         {% block contenido %}
-            
+
+        <div class="container">
+
+            <h2>Contáctanos</h2>
+            <form id="contact-form" method="post" action="{% url 'realizarConsulta' %}">
+              {% csrf_token %}
+          
+              <div class="form-group">
+                <label for="name">Nombre completo:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+          
+              <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+          
+              <div class="form-group">
+                <label for="subject">Asunto:</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
+              </div>
+          
+              <div class="form-group">
+                <label for="message">Mensaje:</label>
+                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+              </div>
+          
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>  
+          
+          
+            <p id="form-message"></p> </div>
+
         {% endblock contenido %}
-            
- 
-        <!-- Footer-->
-        <footer class="footer bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Acerca</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contacto</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Términos de uso</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Politica de Privacidad</a></li>
-                        </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Pablo Website 2024. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </footer>
+       
+       
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -115,4 +106,3 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
 </html>
-

@@ -1,79 +1,78 @@
 {% extends "entidades/index.html" %}
 
-
-
 {% block titulo %}
 <h1 class="mb-5">Estilos</h1>
 {% endblock titulo %}
 
-
-
 {% block contenido %}
 
+<section id="estilos-yoga">
+  <h2>Estilos de Yoga</h2>
+
+  <div class="styles-description">
+    <p>Ofrecemos una variedad de estilos de yoga para adaptarse a tus necesidades y preferencias. Descubre cuál es el ideal para ti:</p>
+
+    <div class="style">
+      <h3>Ashtanga</h3>
+      <p>Ashtanga es un estilo de yoga dinámico y vigoroso...</p>
+    </div>
+  </div>
+</section>
+
+<form action="{% url 'buscar' %}" method="get" class="d-flex justify-content-end mb-3">
+  <input type="text" name="buscar" class="form-control me-2" placeholder="Buscar estilo">
+  <button type="submit" class="btn btn-primary">
+    <i class="fa fa-search"></i> Buscar
+  </button>
+</form>
+
 <table>
-    <tr>
-        <td width="200"><h2>Estilo</h2></td>
-        <td>
-            <a
-              href="{% url 'estiloForm' %}"
-              class="btn btn-primary btn-sm"
-              ><i class="fa fa-plus fa-lg" title="Crear"></i>
-            </a>
-        </td>
-    </tr>
+  <tr>
+    <td width="200"><h2>Estilo</h2></td>
+    <td>
+      <a
+        href="{% url 'estiloForm' %}"
+        class="btn btn-primary btn-sm"
+        ><i class="fa fa-plus fa-lg" title="Crear"></i>
+      </a>
+    </td>
+  </tr>
 </table>
-    
 
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Estilo</th>
-            <th>Horarios</th>
-            <th>Acciones</th>          
-        </tr>
-    </thead>    
-    <tbody>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Estilo</th>
+      <th>Horarios</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
     {% for e in estilo %}
-        <tr>
-            <td>{{ e.id }}</td>
-            <td>{{ e.nombre }}</td>
-            <td>{{ e.estilo }}</td>
-            <td>{{ e.horarios }}</td>
-            <td>
-                <a
-                  href="{% url 'estiloUpdate' e.id %}"
-                  class="btn btn-primary"
-                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
-                </a>
-                <a
-                  href="{% url 'estiloDelete' e.id %}"
-                  class="btn btn-danger"
-                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>"        
-                </a>    
-            </td>    
-        </tr>
+      <tr>
+        <td>{{ e.id }}</td>
+        <td>{{ e.nombre }}</td>
+        <td>{{ e.estilo }}</td>
+        <td>{{ e.horarios }}</td>
+        <td>
+          <a
+            href="{% url 'estiloUpdate' e.id %}"
+            class="btn btn-primary"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+          </a>
+          <a
+            href="{% url 'estiloDelete' e.id %}"
+            class="btn btn-danger"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+            ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+          </a>
+        </td>
+      </tr>
     {% endfor %}
-    </tbody>
+  </tbody>
 </table>
+
 {% endblock contenido %}
-    
-<!--
-<a
-                  href="{% url 'cursoUpdate' c.id %}"
-                  class="btn btn-primary"
-                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                  ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
-                </a>
-                <a
-                  href="{% url 'cursoDelete' c.id %}"
-                  class="btn btn-danger"
-                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
-                  ><i class="fa fa-trash fa-sm" title="Delete Record"></i>"        
-                </a>    
-            </td>    
-        </tr>
--->

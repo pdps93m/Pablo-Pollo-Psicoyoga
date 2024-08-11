@@ -30,16 +30,15 @@ class Alumno(models.Model):
     def __str__(self):
         return f"{self.apellido}, {self.nombre}"
         
-"""class Consultas(models.Model):
+class Consulta(models.Model):
     nombre = models.CharField(max_length=60)
-    pregunta = models.CharField(max_length=500,default="Sin estilo")
-    email = models.EmailField()"""
+    email = models.EmailField()
+    motivo = models.CharField(max_length=500)
+    mensaje = models.CharField(max_length=500)
     
 class Ac_terapeutico(models.Model):
-    nombre = models.CharField(max_length=60,default="Sin estilo")
-    asist_semanales = models.CharField(max_length=50,default="Sin estilo")
+    dia = models.CharField(max_length=60,default="Sin estilo")
     horario = models.CharField(max_length=50,default="Sin estilo")
-    email = models.EmailField()
     
 
     

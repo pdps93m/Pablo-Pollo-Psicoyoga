@@ -7,56 +7,53 @@ from entidades.views import *
 from django.contrib.auth.views import LogoutView, LoginView
 
 
+
+ 
+
+
 urlpatterns = [
     path('', home, name="home"),
     
     
     path('datos_mios/', views.datos_mios, name="datos_mios"),
-    #path('consultas/', views.consultas, name="consultas"),
+    
+    
+    path('realizarConsulta/', views.realizarConsulta, name="realizarConsulta"),
+    path('confirmacionConsulta/', views.realizarConsulta, name='enviar_consulta'),
     
     
     
-    #_____ Estilos
+    
+        #_____ Estilos
     path('estilo/', EstiloList.as_view(), name="estilo"),
     path('estiloCreate/', EstiloCreate.as_view(), name="estiloCreate"),
     path('estiloUpdate/<int:pk>/', EstiloUpdate.as_view(), name="estiloUpdate"),   
     path('estiloDelete/<int:pk>/', EstiloDelete.as_view(), name="estiloDelete"),   
 
-    
-    #path('estiloForm/', estiloForm, name="estiloForm"),
-    #path('estiloUpdate/<id_estilo>/', estiloUpdate, name="estiloUpdate"),
-    #path('estiloDelete/<id_estilo>/', estiloDelete, name="estiloDelete"),
 
     #_____ Alumno
     path('alumno/',AlumnoList.as_view(), name="alumno"),
-    #path('alumnoForm/', alumnoForm, name="alumnoForm"),
     path('alumnoCreate/',AlumnoCreate.as_view(), name="alumnoCreate"),
     path('alumnoUpdate/<int:pk>/', AlumnoUpdate.as_view(), name="alumnoUpdate"),   
     path('alumnoDelete/<int:pk>/', AlumnoDelete.as_view(), name="alumnoDelete"),   
 
+
     #_____ Ac Terapeutico
     path('ac_terapeutico/', views.ac_terapeutico, name="ac_terapeutico"),
-    #path('ac_terapForm/', ac_terapForm, name="ac_terapForm"),
+    
      
     #_____Busquedas
     path('buscarEstilo/', buscarEstilo, name="buscarEstilo"),
-    path('encontrarEstilo/', encontrarEstilo, name="encontrarEstilo"),
+    path('encontrarEstilo/', views.encontrarEstilo, name="estiloForm"),
     path('buscarAlumno/', buscarAlumno, name="buscarAlumno"),
-    path('encontrarAlumno/', encontrarAlumno, name="encontrarAlumno"),
+    path('encontrarAlumno/', views.encontrarAlumno, name="alumnoForm"),
     
+    path('busqueda/', views.buscar, name="busqueda"),
+    path('resutados/', views.resultados_alumnos, name="resultados"),
+    path('resutados/', views.resultados_estilos, name="resultados"),
+    path('resultados/estilos/<int:estilo_id>/', views.resultados_estilos, name='resultados_estilos'),
+    path('resultados/alumnos/<int:alumno_id>/', views.resultados_alumnos, name='resultados_alumnos'),
     
-    
-    #______ Alumno CCBV
-    
-    #path('alumno/',AlumnoList.as_view(), name="alumno"),
-    
-    
-    #______ Alumno create
-    path('alumnoCreate/',AlumnoList.as_view(), name="alumnoCreate"),
-    
-    #______ Alumno delete
-    path('alumnoDelete/<int:pk>/', AlumnoDelete.as_view(), name="alumnoDelete"),   
-
     
     #______ Login / Logout / Registration
     path('login/', loginRequest, name="login"),
